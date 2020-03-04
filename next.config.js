@@ -36,12 +36,12 @@ const getPathsForJobs = () => (
 module.exports = {
 
   // Webpack config
-  webpack: configuration => {
-    configuration.module.rules.push({
+  webpack: config => {
+    config.module.rules.push({
       test: /\.md$/,
       use: 'frontmatter-markdown-loader',
     })
-    return configuration
+    return config
   },
 
   // Pathmap config

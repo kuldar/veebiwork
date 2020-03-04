@@ -5,6 +5,7 @@
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import Layout from '../components/layout'
+import Hero from '../components/home/hero'
 
 //////////////////
 //  Page: Home  //
@@ -12,6 +13,7 @@ import Layout from '../components/layout'
 
 const Home = ({ jobsList }) => (
   <Layout>
+    <Hero />
 
     { jobsList.map(job => (
       <div key={job.slug} className="job">

@@ -4,6 +4,7 @@
 
 import css from 'styled-jsx/css'
 import Layout from '../components/layout'
+import t from '../styles/theme'
 
 ///////////////////
 //  Page: About  //
@@ -30,9 +31,7 @@ const styles = css`
     font-weight: bold;
   }
 
-  main {
-    background: red;
-  }
+  main {}
 `
 
 export default About
