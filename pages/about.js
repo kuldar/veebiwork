@@ -1,17 +1,38 @@
+///////////////
+//  Imports  //
+///////////////
+
+import css from 'styled-jsx/css'
 import Layout from '../components/layout'
-import { attributes, html } from '../content/about.md'
+
+///////////////////
+//  Page: About  //
+///////////////////
 
 const About = () => (
   <Layout>
-    <h1>{attributes.title}</h1>
-    <div dangerouslySetInnerHTML={{ __html: html }} />
-    <style jsx>{`
-      h1,
-      div {
-        text-align: center;
-      }
-    `}</style>
+    <h1>About</h1>
+
+    <main>
+      <p>Well, hello there..</p>
+    </main>
+
+    <style jsx>{styles}</style>
   </Layout>
 )
+
+//////////////
+//  Styles  //
+//////////////
+
+const styles = css`
+  h1 {
+    font-weight: bold;
+  }
+
+  main {
+    background: red;
+  }
+`
 
 export default About
