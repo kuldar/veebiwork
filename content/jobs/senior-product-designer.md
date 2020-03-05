@@ -4,13 +4,15 @@ title: Senior Product Designer
 company_name: HeyDoctor
 company_logo: https://cdn.dribbble.com/users/3785221/avatars/normal/ff439f39839cfc3cd832d9db8e4e975c.png?1562024842
 company_location: Tallinn, Estonia
+company_website: http://www.heydoctor.com
 is_remote_friendly: true
 work_type: Full-time
+short_description: At HeyDoctor, our mission is to increase healthcare efficiency, affordability and accessibility. We’re reinventing how healthcare is accessed and provided with custom end-to-end solutions for patients and providers to connect...
 published_at: 2019-09-06
 apply_link: https://dribbble.com/jobs/19306-Sr-Product-Designer/apply_now
 ---
 
-## About HeyDoctor
+# About HeyDoctor
 
 At HeyDoctor, our mission is to increase healthcare efficiency, affordability and accessibility. We’re reinventing how healthcare is accessed and provided with custom end-to-end solutions for patients and providers to connect online in real-time. Thousands of patients a month are using HeyDoctor’s mobile and web apps to get care from our expert doctors and medical team.
 

@@ -4,7 +4,7 @@
 
 import css from 'styled-jsx/css'
 import Layout from '../components/layout'
-import t from '../styles/theme'
+import t from '../lib/theme'
 
 ///////////////////
 //  Page: About  //

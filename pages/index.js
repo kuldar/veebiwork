@@ -2,47 +2,20 @@
 //  Imports  //
 ///////////////
 
-import Link from 'next/link'
-import css from 'styled-jsx/css'
 import Layout from '../components/layout'
 import Hero from '../components/home/hero'
+import Jobs from '../components/home/jobs'
 
 //////////////////
 //  Page: Home  //
 //////////////////
 
-const Home = ({ jobsList }) => (
+const Home = ({ jobs }) => (
   <Layout>
     <Hero />
-
-    { jobsList.map(job => (
-      <div key={job.slug} className="job">
-        <Link href="/job/[slug]" as={`/job/${job.slug}`}>
-          <a>
-            <img src={job.attributes.company_logo} />
-            <h2>{job.attributes.title}</h2>
-          </a>
-        </Link>
-      </div>
-    ))}
-
-    <style jsx>{styles}</style>
+    <Jobs jobs={jobs} />
   </Layout>
 )
-
-//////////////
-//  Styles  //
-//////////////
-
-const styles = css`
-  .job {
-    text-align: center;
-  }
-  img {
-    max-width: 100%;
-    max-height: 300px;
-  }
-`
 
 /////////////////////
 //  Data fetching  //
@@ -68,8 +41,8 @@ const importJobs = async () => {
 
 // Add the data into page props
 Home.getInitialProps = async () => {
-  const jobsList = await importJobs()
-  return { jobsList }
+  const jobs = await importJobs()
+  return { jobs }
 }
 
 export default Home

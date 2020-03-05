@@ -1,10 +1,13 @@
 ---
 id: ZwtKW4kS
-title: Design Intern - Paid
-company_name: Mountain View Group
-company_location: Atlanta, GA
+title: Product Designer
+company_name: WillowTree
+company_location: Columbus, OH
+company_description: A mobile product agency handcrafting apps for clients such as Regal Cinemas, GE, Wyndham, Time Warner, PepsiCo, American Express, and more.
+company_website: https://willowtreeapps.com/
+company_logo: https://cdn.dribbble.com/users/946503/avatars/normal/bb9535e7d554f420cf10e67c4409afca.png?1498847397
 is_remote_friendly: false
-work_type: Part-time
+work_type: Full-time
 short_description: Mountain View Group is currently seeking a part-time Design Intern. We are looking for a dedicated energetic individual with a willingness to learn and work in a fast-paced environment. This...
 published_at: 2019-09-06
 apply_link: https://dribbble.com
@@ -14,12 +17,12 @@ apply_link: https://dribbble.com
 
 Mountain View Group is currently seeking a part-time Design Intern. We are looking for a dedicated energetic individual with a willingness to learn and work in a fast-paced environment. This position will support our Design Director and Art Director in various art direction and graphic design production. Our design team supports corporate marketing and internal communications needs for large corporate clients, as well as our own internal marketing needs.
 
-If you are interested, please send your resume, cover letter, and online portfolio of work to the email address listed below.
+If you are interested, please [send your resume](http://google.com), cover letter, and online portfolio of work to the email address listed below.
 
 Internship Responsibilities (Include but are not limited to):
 
-- Production of print and digital marketing materials
-- Creating mockups for clients
+- Production of print and digital **marketing materials**
+- Creating mockups for *clients*
 - Creating digital presentations
 - Image retouching and adjustment
 

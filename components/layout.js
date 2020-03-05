@@ -3,7 +3,7 @@
 ///////////////
 
 import css from 'styled-jsx/css'
-import t from '../styles/theme'
+import t from '../lib/theme'
 
 /////////////////////////
 //  Component: Layout  //

@@ -4,7 +4,7 @@
 
 import css from 'styled-jsx/css'
 import Link from 'next/link'
-import t from '../../styles/theme'
+import t from '../../lib/theme'
 
 //////////////////////////////
 //  Component: Home / Hero  //

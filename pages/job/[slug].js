@@ -2,14 +2,14 @@
 //  Imports  //
 ///////////////
 
-import css from 'styled-jsx/css'
 import Layout from '../../components/layout'
+import Listing from '../../components/job/listing'
 
 /////////////////
 //  Page: Job  //
 /////////////////
 
-const Post = ({ job }) => {
+const Job = ({ job }) => {
 
   // Check if job exists
   if (!job) return <div>Not found</div>
@@ -19,33 +19,21 @@ const Post = ({ job }) => {
 
   return (
     <Layout>
-      <article>
-        <h1>{attributes.title}</h1>
-        <img src={attributes.company_logo} />
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </article>
-      <style jsx>{styles}</style>
+      <Listing
+        attributes={attributes}
+        html={html} />
     </Layout>
   )
 }
-
-//////////////
-//  Styles  //
-//////////////
-
-const styles = css`
-  article { margin: 0 auto; }
-  h1 { text-align: center; }
-`
 
 /////////////////////
 //  Data fetching  //
 /////////////////////
 
-Post.getInitialProps = async ({ query }) => {
+Job.getInitialProps = async ({ query }) => {
   const { slug } = query
   const job = await import(`../../content/jobs/${slug}.md`).catch(() => null)
   return { job }
 }
 
-export default Post
+export default Job

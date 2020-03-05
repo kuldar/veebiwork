@@ -2,7 +2,7 @@
 //  Imports  //
 ///////////////
 
-import '../styles/reset.css'
+import '../lib/reset.css'
 
 //////////////
 //  My app  //
