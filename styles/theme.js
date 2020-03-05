@@ -1,4 +1,7 @@
 const Theme = {
+  transition: {
+    normal: '0.1s ease',
+  },
   screen: {
     sm: '@media (min-width: 640px)',
     md: '@media (min-width: 768px)',
@@ -6,11 +9,25 @@ const Theme = {
     xl: '@media (min-width: 1280px)',
   },
   width: {
-    sm: '640px;',
+    sm: '640px',
     md: '768px',
     lg: '1024px',
     xl: '1280px',
     full: '100%',
+  },
+  font: {
+    normal: '400',
+    semibold: '600',
+    bold: '700',
+  },
+  text: {
+    10: '0.625rem',
+    16: '1rem',
+    20: '1.25rem',
+    24: '1.5rem',
+    32: '2rem',
+    48: '3rem',
+    64: '4rem',
   },
   black: '#000000',
   white: '#FFFFFF',
@@ -59,9 +76,9 @@ const Theme = {
   },
   radius: {
     none: '0',
-    sm: '.125rem',
-    default: '.25rem',
-    lg: '.5rem',
+    sm: '0.125rem',
+    md: '0.25rem',
+    lg: '0.5rem',
     full: '9999px',
   },
 }
