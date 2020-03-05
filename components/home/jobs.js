@@ -59,9 +59,10 @@ const Jobs = ({ jobs }) => <>
 
 const styles = css`
   .jobs {
-    max-width: ${t.width.sm};
+    flex: 1;
+    ${'' /* max-width: ${t.width.sm};
     margin: 0 auto;
-    padding: ${t.spacing[16]} 0;
+    padding: ${t.spacing[16]} 0; */}
   }
 
   .job {
@@ -107,7 +108,7 @@ const styles = css`
 
   .job p {
     margin-bottom: ${t.spacing[6]};
-    color: ${t.white};
+    color: ${t.gray[300]};
   }
 
   .job ul {

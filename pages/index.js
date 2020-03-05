@@ -2,20 +2,43 @@
 //  Imports  //
 ///////////////
 
+import css from 'styled-jsx/css'
 import Layout from '../components/layout'
 import Hero from '../components/home/hero'
 import Jobs from '../components/home/jobs'
+import Filters from '../components/home/filters'
+import t from '../lib/theme'
 
 //////////////////
 //  Page: Home  //
 //////////////////
 
-const Home = ({ jobs }) => (
+const Home = ({ jobs }) => <>
   <Layout>
     <Hero />
-    <Jobs jobs={jobs} />
+    <main>
+      <Jobs jobs={jobs} />
+      <Filters />
+    </main>
   </Layout>
-)
+
+  <style jsx>{styles}</style>
+</>
+
+//////////////
+//  Styles  //
+//////////////
+
+const styles = css`
+  main {
+    display: flex;
+    align-items: flex-start;
+    max-width: ${t.width.md};
+    margin: 0 auto;
+    padding: ${t.spacing[16]} 0;
+  }
+`
+
 
 /////////////////////
 //  Data fetching  //
