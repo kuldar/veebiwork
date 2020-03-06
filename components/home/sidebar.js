@@ -6,46 +6,53 @@ import css from 'styled-jsx/css'
 import t from '../../lib/theme'
 
 /////////////////////////////////
-//  Component: Home / Filters  //
+//  Component: Home / Sidebar  //
 /////////////////////////////////
 
-const Filters = () => <>
-  <div className='filters'>
+const Sidebar = () => <>
+  <div className='sidebar'>
 
-    <div className='input'>
-      <label for='keyword'>Keyword</label>
-      <input type='text' placeholder='Enter Keyword...' id='keyword' />
-    </div>
-
-    <div className='input'>
-      <label for='location'>Location</label>
-      <input type='text' placeholder='Enter Location...' id='location' />
-    </div>
-
-    <div className='dropdown'>
-      <label for='specialties'>Specialties</label>
-      <select id='specialties'>
-        <option value='all'>All</option>
-        <option value='design'>Design</option>
-        <option value='development'>Development</option>
-        <option value='marketing'>Marketing</option>
-        <option value='support'>Support</option>
-      </select>
-    </div>
-
-    <div className='checkboxes'>
-      <div className='checkbox'>
-        <input type='checkbox' id='remote-friendly' />
-        <label for='remote-friendly'>Remote Friendly</label>
+    <div className='filters'>
+      <div className='input'>
+        <label for='keyword'>Keyword</label>
+        <input type='text' placeholder='Enter Keyword...' id='keyword' />
       </div>
 
-      <div className='checkbox'>
-        <input type='checkbox' id='full-time' />
-        <label for='full-time'>Full Time</label>
+      <div className='input'>
+        <label for='location'>Location</label>
+        <input type='text' placeholder='Enter Location...' id='location' />
       </div>
+
+      <div className='dropdown'>
+        <label for='specialties'>Specialties</label>
+        <select id='specialties'>
+          <option value='all'>All</option>
+          <option value='design'>Design</option>
+          <option value='development'>Development</option>
+          <option value='marketing'>Marketing</option>
+          <option value='support'>Support</option>
+        </select>
+      </div>
+
+      <div className='checkboxes'>
+        <div className='checkbox'>
+          <input type='checkbox' id='remote-friendly' />
+          <label for='remote-friendly'>Remote Friendly</label>
+        </div>
+
+        <div className='checkbox'>
+          <input type='checkbox' id='full-time' />
+          <label for='full-time'>Full Time</label>
+        </div>
+      </div>
+
+      <button className='search'>Search</button>
     </div>
 
-    <button>Search</button>
+    <div className='email'>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button>Subscribe by Email</button>
+    </div>
   </div>
 
   <style jsx>{styles}</style>
@@ -56,11 +63,15 @@ const Filters = () => <>
 //////////////
 
 const styles = css`
-  .filters {
+
+  .sidebar {
     position: sticky;
     top: ${t.spacing[4]};
     margin-left: ${t.spacing[8]};
     width: ${t.width.xxxs};
+  }
+
+  .filters {
     padding: ${t.spacing[6]};
     background: ${t.gray[800]};
     border-radius: ${t.radius.md};
@@ -145,7 +156,7 @@ const styles = css`
   }
 
   .checkboxes {
-    border: 1px solid ${t.gray[500]};
+    border: 1px solid ${t.gray[600]};
     border-radius: ${t.radius.md};
     padding: ${t.spacing[4]};
     margin-bottom: ${t.spacing[6]};
@@ -176,7 +187,7 @@ const styles = css`
     color: ${t.white};
   }
 
-  button {
+  .search {
     transition: background-color ${t.transition.normal};
     display: block;
     width: 100%;
@@ -190,14 +201,50 @@ const styles = css`
     outline: none;
   }
 
-  button:hover {
+  .search:hover {
     background-color: ${t.purple[500]};
   }
 
-  button:active {
+  .search:active {
+    position: relative;
+    top: 1px;
+  }
+
+  .email {
+    border: 1px solid ${t.gray[700]};
+    margin-top: ${t.spacing[6]};
+    padding: ${t.spacing[6]};
+  }
+
+  .email p {
+    font-size: ${t.text[14]};
+    color: ${t.gray[300]};
+    margin-bottom: ${t.spacing[4]};
+    text-align: center;
+  }
+
+  .email button {
+    transition: background-color ${t.transition.normal};
+    width: 100%;
+    padding: ${t.spacing[3]} ${t.spacing[4]};
+    border-radius: ${t.radius.md};
+    font-size: ${t.text[12]};
+    font-weight: ${t.font.semibold};
+    line-height: 1;
+    white-space: nowrap;
+    color: ${t.white};
+    background-color: ${t.gray[700]};
+    outline: none;
+  }
+
+  .email button:hover {
+    background-color: ${t.gray[600]};
+  }
+
+  .email button:active {
     position: relative;
     top: 1px;
   }
 `
 
-export default Filters
+export default Sidebar

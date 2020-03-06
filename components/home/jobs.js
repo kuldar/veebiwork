@@ -16,6 +16,7 @@ const Jobs = ({ jobs }) => <>
       <li className='job' key={slug}>
         <Link href="/job/[slug]" as={`/job/${slug}`}>
           <a>
+
             <header>
               { job.company_logo && <img src={job.company_logo} /> }
               <div>
@@ -23,7 +24,9 @@ const Jobs = ({ jobs }) => <>
                 <h3>{job.company_name}</h3>
               </div>
             </header>
+
             <p>{job.short_description}</p>
+
             <ul>
               { job.company_location &&
                 <li>
@@ -44,6 +47,7 @@ const Jobs = ({ jobs }) => <>
                 </li>
               }
             </ul>
+
           </a>
         </Link>
       </li>
@@ -82,6 +86,11 @@ const styles = css`
     background-color: ${t.gray[850]};
   }
 
+  .job a:active {
+    position: relative;
+    top: 1px;
+  }
+
   .job header {
     display: flex;
     margin-bottom: ${t.spacing[4]};
@@ -108,6 +117,10 @@ const styles = css`
 
   .job p {
     margin-bottom: ${t.spacing[6]};
+    color: ${t.white};
+  }
+
+  .job a:visited p {
     color: ${t.gray[300]};
   }
 

@@ -6,7 +6,7 @@ import css from 'styled-jsx/css'
 import Layout from '../components/layout'
 import Hero from '../components/home/hero'
 import Jobs from '../components/home/jobs'
-import Filters from '../components/home/filters'
+import Sidebar from '../components/home/sidebar'
 import t from '../lib/theme'
 
 //////////////////
@@ -18,7 +18,7 @@ const Home = ({ jobs }) => <>
     <Hero />
     <main>
       <Jobs jobs={jobs} />
-      <Filters />
+      <Sidebar />
     </main>
   </Layout>
 
@@ -33,7 +33,7 @@ const styles = css`
   main {
     display: flex;
     align-items: flex-start;
-    max-width: ${t.width.md};
+    max-width: ${t.width.lg};
     margin: 0 auto;
     padding: ${t.spacing[16]} 0;
   }
