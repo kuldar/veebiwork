@@ -2,8 +2,8 @@
 //  Imports  //
 ///////////////
 
-import Link from 'next/link'
 import Layout from '../../components/layout'
+import Hero from '../../components/home/hero'
 
 ///////////////////////
 //  Page: Job / New  //
@@ -12,11 +12,8 @@ import Layout from '../../components/layout'
 const New = () => {
   return (
     <Layout>
-      <Link href='/'>
-        <a>Home</a>
-      </Link>
-
-      <h1>New job listing page</h1>
+      <Hero />
+      <h1 style={{ textAlign: 'center', marginTop: '2rem' }}>New job listing page</h1>
     </Layout>
   )
 }

@@ -24,7 +24,7 @@ const Hero = () => <>
     <h1>Lorem ipsum dolor sit amet, <em>consectetur adipiscing elit</em>. Pellentesque sodales id ligula nec volutpat. Etiam mollis sapien quis nulla.</h1>
 
     <Link href='/job/new'>
-      <a>Post a job – as low as €99</a>
+      <a>Post a New Job</a>
     </Link>
   </div>
   <hr />
