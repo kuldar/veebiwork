@@ -40,15 +40,15 @@ const Sidebar = ({ filters }) => {
   }
 
   // Reset filters and state
-  const handleFiltersReset = e => {
-    e.preventDefault()
-    setKeyword('')
-    setLocation('all')
-    setSpecialty('all')
-    setIsRemote(false)
-    setIsFullTime(false)
-    router.push('/')
-  }
+  // const handleFiltersReset = e => {
+  //   e.preventDefault()
+  //   setKeyword('')
+  //   setLocation('all')
+  //   setSpecialty('all')
+  //   setIsRemote(false)
+  //   setIsFullTime(false)
+  //   router.push('/')
+  // }
 
   return <>
     <div className='sidebar'>
@@ -115,11 +115,15 @@ const Sidebar = ({ filters }) => {
         <button type='submit' className='search'>Otsi</button>
       </form>
 
-      <a className='clear' onClick={handleFiltersReset}>Eemalda kõik filtrid</a>
+      {/* <a className='clear' onClick={handleFiltersReset}>Eemalda kõik filtrid</a> */}
 
       <div className='email'>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <button>Subscribe by Email</button>
+        <div className='flex'>
+          <img src='/img/email.svg' />
+          <p>Uued töökuulutused otse oma e-posti!</p>
+        </div>
+
+        <button>Telli tasuta teavitus</button>
       </div>
     </div>
 
@@ -208,15 +212,20 @@ const styles = css`
 
   .dropdown select {
     outline: none;
+    appearance: none;
     width: 100%;
     border: none;
     border-radius: ${t.radius.md};
     height: 40px;
-    padding: ${t.spacing[3]} ${t.spacing[4]};
+    padding: ${t.spacing[2]} ${t.spacing[4]};
     font-size: ${t.text[16]};
     line-height: 1;
     color: ${t.white};
     background-color: ${t.gray[650]};
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    background-image: url('/img/chevron-down.svg');
   }
 
   .dropdown select:focus {
@@ -250,6 +259,7 @@ const styles = css`
   }
 
   .checkbox label {
+    user-select: none;
     transition: color ${t.transition.normal};
     display: block;
     cursor: pointer;
@@ -267,6 +277,7 @@ const styles = css`
   }
 
   .search {
+    user-select: none;
     transition: background-color ${t.transition.normal};
     display: block;
     width: 100%;
@@ -311,14 +322,27 @@ const styles = css`
   .email {
     border: 1px solid ${t.gray[700]};
     margin-top: ${t.spacing[6]};
-    padding: ${t.spacing[6]};
+    padding: ${t.spacing[4]} ${t.spacing[6]} ${t.spacing[6]} ${t.spacing[6]};
+    border-radius: ${t.radius.md};
+  }
+
+  .email .flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: ${t.spacing[4]};
+  }
+
+  .email img {
+    display: block;
+    height: 3rem;
+    width: auto;
+    margin-right: ${t.spacing[4]};
   }
 
   .email p {
     font-size: ${t.text[14]};
+    line-height: 1.4;
     color: ${t.gray[300]};
-    margin-bottom: ${t.spacing[4]};
-    text-align: center;
   }
 
   .email button {

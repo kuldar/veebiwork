@@ -11,7 +11,7 @@ import t from '../../lib/theme'
 //////////////////////////////
 
 const Hero = () => <>
-  <div className='background'>
+  <div className='container'>
 
     <div className='hero'>
       <div className='logo' onClick={() => window.location.href = '/'}>
@@ -22,12 +22,13 @@ const Hero = () => <>
         </svg>
       </div>
 
-      <h1>Leia oma järgmine projekt, startup või tööots. Töökuulutused arendajatele, disaineritele, projektijuhtidele, jms.</h1>
+      <h1>Leia oma järgmine projekt, startup või tööots. Tööpakkumised arendajatele, disaineritele, projektijuhtidele, jms.</h1>
 
       <Link href='/job/new'>
-        <a>Lisa uus kuulutus</a>
+        <a>Lisa oma kuulutus <em>(beta)</em></a>
       </Link>
     </div>
+
     <div className='illustration'>
       <img src='/img/hero-bg-1.svg' />
       <img src='/img/hero-bg-2.svg' />
@@ -43,26 +44,47 @@ const Hero = () => <>
 //////////////
 
 const styles = css`
-  .background {
+  .container {
     position: relative;
     padding-bottom: ${t.spacing[16]};
   }
 
   .hero {
+    position: relative;
+    z-index: 10;
     max-width: ${t.width.md};
     margin: 0 auto;
     padding: ${t.spacing[10]} ${t.spacing[8]} ${t.spacing[16]} ${t.spacing[8]};
     text-align: center;
   }
 
+  @media screen and (min-width: 550px) {
+    .hero {
+      padding: ${t.spacing[10]} ${t.spacing[8]} ${t.spacing[32]} ${t.spacing[8]};
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    .hero {
+      padding: ${t.spacing[10]} ${t.spacing[8]} ${t.spacing[16]} ${t.spacing[8]};
+    }
+  }
+
   .logo svg {
     transition: color ${t.transition.normal};
-    margin: 0 auto ${t.spacing[10]} auto;
+    margin: 0 auto ${t.spacing[6]} auto;
     cursor: pointer;
     display: block;
-    height: 3.5rem;
+    height: 2.5rem;
     width: auto;
     color: ${t.gray[300]};
+  }
+
+  @media screen and (min-width: 550px) {
+    .logo svg {
+      height: 3.5rem;
+      margin: 0 auto ${t.spacing[10]} auto;
+    }
   }
 
   .logo svg:hover {
@@ -81,7 +103,7 @@ const styles = css`
     font-weight: ${t.font.semibold};
   }
 
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 550px) {
     .hero h1 {
       font-size: ${t.text[32]};
     }
@@ -102,7 +124,8 @@ const styles = css`
 
   .hero a {
     transition: background-color ${t.transition.normal};
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: ${t.spacing[3]} ${t.spacing[4]};
     border-radius: ${t.radius.md};
     font-size: ${t.text[16]};
@@ -110,6 +133,14 @@ const styles = css`
     line-height: 1;
     color: ${t.white};
     background-color: ${t.purple[600]};
+  }
+
+  .hero a em {
+    font-style: normal;
+    color: ${t.purple[300]};
+    text-transform: uppercase;
+    font-size: ${t.text[14]};
+    margin-left: ${t.spacing[2]};
   }
 
   .hero a:hover {
@@ -128,14 +159,42 @@ const styles = css`
   }
 
   .illustration {
-    width: 1100px;
-    display: flex;
+    display: none;
     align-items: flex-end;
     justify-content: space-between;
+    width: 100%;
     position: absolute;
     bottom: 2rem;
-    left: calc((100vw - 1100px) / 2);
     right: 0;
+    left: 0;
+    padding: 0 2rem;
+  }
+
+  .illustration img:first-child { height: 12rem; }
+  .illustration img:last-child { height: 11rem; }
+
+  @media screen and (min-width: 550px) {
+    .illustration { display: flex; }
+  }
+
+  @media screen and (min-width: 700px) {
+    .illustration img:first-child { height: 15rem; }
+    .illustration img:last-child { height: 13rem; }
+  }
+
+  @media screen and (min-width: 900px) {
+    .illustration { padding: 0; }
+    .illustration img:first-child,
+    .illustration img:last-child {
+      height: auto;
+    }
+  }
+
+  @media screen and (min-width: 1100px) {
+    .illustration {
+      left: calc((100vw - 1100px) / 2);
+      width: 1100px;
+    }
   }
 `
 

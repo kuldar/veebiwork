@@ -138,7 +138,7 @@ const styles = css`
     transition: color ${t.transition.normal};
     cursor: pointer;
     display: block;
-    height: 2.25rem;
+    height: 2.5rem;
     width: auto;
     color: ${t.gray[400]};
   }
