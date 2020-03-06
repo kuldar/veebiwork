@@ -2,6 +2,8 @@
 //  Imports  //
 ///////////////
 
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 import t from '../../lib/theme'
 
@@ -9,54 +11,121 @@ import t from '../../lib/theme'
 //  Component: Home / Sidebar  //
 /////////////////////////////////
 
-const Sidebar = () => <>
-  <div className='sidebar'>
+const Sidebar = ({ filters }) => {
 
-    <div className='filters'>
-      <div className='input'>
-        <label for='keyword'>Keyword</label>
-        <input type='text' placeholder='Enter Keyword...' id='keyword' />
-      </div>
+  // Get the Nextjs router
+  const router = useRouter()
 
-      <div className='input'>
-        <label for='location'>Location</label>
-        <input type='text' placeholder='Enter Location...' id='location' />
-      </div>
+  // Set up hooks and variables for filters
+  const [keyword, setKeyword] = useState(filters && filters.keyword || '')
+  const [location, setLocation] = useState(filters && filters.location || 'all')
+  const [specialty, setSpecialty] = useState(filters && filters.specialty || 'all')
+  const [isRemote, setIsRemote] = useState(filters && filters.isRemote || false)
+  const [isFullTime, setIsFullTime] = useState(filters && filters.isFullTime || false)
 
-      <div className='dropdown'>
-        <label for='specialties'>Specialties</label>
-        <select id='specialties'>
-          <option value='all'>All</option>
-          <option value='design'>Design</option>
-          <option value='development'>Development</option>
-          <option value='marketing'>Marketing</option>
-          <option value='support'>Support</option>
-        </select>
-      </div>
+  // Handle form input change
+  const handleInputChange = e => {
+    if (e.target.id === 'keyword') { setKeyword(e.target.value) }
+    else if (e.target.id === 'location') { setLocation(e.target.value) }
+    else if (e.target.id === 'specialty') { setSpecialty(e.target.value) }
+    else if (e.target.id === 'is-remote') { setIsRemote(e.target.checked) }
+    else if (e.target.id === 'is-full-time') { setIsFullTime(e.target.checked) }
+  }
 
-      <div className='checkboxes'>
-        <div className='checkbox'>
-          <input type='checkbox' id='remote-friendly' />
-          <label for='remote-friendly'>Remote Friendly</label>
+  // Push filters to params on submit
+  const handleFiltersSubmit = e => {
+    e.preventDefault()
+    const filters = { keyword, location, specialty, isRemote, isFullTime }
+    router.push({ pathname: '/', query: filters })
+  }
+
+  // Reset filters and state
+  const handleFiltersReset = e => {
+    e.preventDefault()
+    setKeyword('')
+    setLocation('all')
+    setSpecialty('all')
+    setIsRemote(false)
+    setIsFullTime(false)
+    router.push('/')
+  }
+
+  return <>
+    <div className='sidebar'>
+
+      <form
+        className='filters'
+        onSubmit={handleFiltersSubmit}>
+        <div className='input'>
+          <label htmlFor='keyword'>Keyword</label>
+          <input
+            type='text'
+            onChange={handleInputChange}
+            value={keyword}
+            placeholder='Enter Keyword...'
+            id='keyword' />
         </div>
 
-        <div className='checkbox'>
-          <input type='checkbox' id='full-time' />
-          <label for='full-time'>Full Time</label>
+        <div className='dropdown'>
+          <label htmlFor='location'>Location</label>
+          <select
+            value={location}
+            onChange={handleInputChange}
+            id='location'>
+            <option value='all'>All</option>
+            <option value='tallinn'>Tallinn</option>
+            <option value='tartu'>Tartu</option>
+          </select>
         </div>
+
+        <div className='dropdown'>
+          <label htmlFor='specialty'>Specialties</label>
+          <select
+            value={specialty}
+            onChange={handleInputChange}
+            id='specialty'>
+            <option value='all'>All</option>
+            <option value='design'>Design</option>
+            <option value='development'>Development</option>
+            <option value='marketing'>Marketing</option>
+            <option value='support'>Support</option>
+          </select>
+        </div>
+
+        <div className='checkboxes'>
+          <div className='checkbox'>
+            <input
+              type='checkbox'
+              onChange={handleInputChange}
+              checked={isRemote}
+              id='is-remote' />
+            <label htmlFor='is-remote'>Remote Friendly</label>
+          </div>
+
+          <div className='checkbox'>
+            <input
+              type='checkbox'
+              onChange={handleInputChange}
+              checked={isFullTime}
+              id='is-full-time' />
+            <label htmlFor='is-full-time'>Full Time</label>
+          </div>
+        </div>
+
+        <button type='submit' className='search'>Search</button>
+      </form>
+
+      <a className='clear' onClick={handleFiltersReset}>Clear all filters</a>
+
+      <div className='email'>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Subscribe by Email</button>
       </div>
-
-      <button className='search'>Search</button>
     </div>
 
-    <div className='email'>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <button>Subscribe by Email</button>
-    </div>
-  </div>
-
-  <style jsx>{styles}</style>
-</>
+    <style jsx>{styles}</style>
+  </>
+}
 
 //////////////
 //  Styles  //
@@ -166,6 +235,11 @@ const styles = css`
     display: flex;
   }
 
+  .checkbox:active {
+    position: relative;
+    top: 1px;
+  }
+
   .checkbox + .checkbox {
     margin-top: ${t.spacing[4]};
   }
@@ -176,11 +250,16 @@ const styles = css`
   }
 
   .checkbox label {
+    transition: color ${t.transition.normal};
     display: block;
     cursor: pointer;
     font-weight: ${t.font.semibold};
     line-height: 1;
     color: ${t.gray[400]};
+  }
+
+  .checkbox:hover label {
+    color: ${t.white};
   }
 
   .checkbox input:checked + label {
@@ -206,6 +285,25 @@ const styles = css`
   }
 
   .search:active {
+    position: relative;
+    top: 1px;
+  }
+
+  .clear {
+    transition: color ${t.transition.normal};
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    margin: ${t.spacing[3]} auto 0 auto;
+    font-size: ${t.text[14]};
+    color: ${t.gray[300]};
+  }
+
+  .clear:hover {
+    color: ${t.white};
+  }
+
+  .clear:active {
     position: relative;
     top: 1px;
   }

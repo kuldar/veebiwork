@@ -1,7 +1,6 @@
 ///////////////
 //  Imports  //
 ///////////////
-
 import css from 'styled-jsx/css'
 import Layout from '../components/layout'
 import Hero from '../components/home/hero'
@@ -13,12 +12,12 @@ import t from '../lib/theme'
 //  Page: Home  //
 //////////////////
 
-const Home = ({ jobs }) => <>
+const Home = ({ jobs, filters }) => <>
   <Layout>
     <Hero />
     <main>
       <Jobs jobs={jobs} />
-      <Sidebar />
+      <Sidebar filters={filters} />
     </main>
   </Layout>
 
@@ -63,9 +62,45 @@ const importJobs = async () => {
 }
 
 // Add the data into page props
-Home.getInitialProps = async () => {
-  const jobs = await importJobs()
-  return { jobs }
+Home.getInitialProps = async ({ query }) => {
+
+  console.log({ query })
+
+  let jobs = await importJobs()
+  let filters = {}
+
+  // Check for props in query
+
+  if (query.keyword) {
+    jobs = jobs.filter(job => job.html.toLowerCase().includes(query.keyword.toLowerCase()))
+    filters = { ...filters, keyword: query.keyword }
+  }
+
+  if (query.location) {
+    filters = { ...filters, location: query.location }
+  }
+
+  if (query.specialty) {
+    filters = { ...filters, specialty: query.specialty }
+  }
+
+  if (query.isRemote && query.isRemote === 'true') {
+    jobs = jobs.filter(job => job.attributes.is_remote_friendly === true)
+    filters = { ...filters, isRemote: true }
+  }
+
+  if (query.isFullTime && query.isFullTime === 'true') {
+    jobs = jobs.filter(job => job.attributes.work_type === 'Full-time')
+    filters = { ...filters, isFullTime: true }
+  }
+
+  // else set props to default
+
+  if (!query) {
+    filters = { keyword: '', location: 'all', specialty: 'all', isRemote: false, isFullTime: false }
+  }
+
+  return { jobs, filters }
 }
 
 export default Home
