@@ -57,38 +57,38 @@ const Sidebar = ({ filters }) => {
         className='filters'
         onSubmit={handleFiltersSubmit}>
         <div className='input'>
-          <label htmlFor='keyword'>Keyword</label>
           <input
             type='text'
             onChange={handleInputChange}
             value={keyword}
-            placeholder='Enter Keyword...'
+            placeholder='Otsi märksõna...'
             id='keyword' />
         </div>
 
         <div className='dropdown'>
-          <label htmlFor='location'>Location</label>
+          <label htmlFor='location'>Asukoht</label>
           <select
             value={location}
             onChange={handleInputChange}
             id='location'>
-            <option value='all'>All</option>
+            <option value='all'>Kõik</option>
             <option value='tallinn'>Tallinn</option>
             <option value='tartu'>Tartu</option>
+            <option value='tartu'>Pärnu</option>
           </select>
         </div>
 
         <div className='dropdown'>
-          <label htmlFor='specialty'>Specialties</label>
+          <label htmlFor='specialty'>Valdkond</label>
           <select
             value={specialty}
             onChange={handleInputChange}
             id='specialty'>
-            <option value='all'>All</option>
-            <option value='design'>Design</option>
-            <option value='development'>Development</option>
-            <option value='marketing'>Marketing</option>
-            <option value='support'>Support</option>
+            <option value='all'>Kõik</option>
+            <option value='design'>Disain</option>
+            <option value='development'>Arendus</option>
+            <option value='marketing'>Turundus</option>
+            <option value='support'>Klienditugi</option>
           </select>
         </div>
 
@@ -99,7 +99,7 @@ const Sidebar = ({ filters }) => {
               onChange={handleInputChange}
               checked={isRemote}
               id='is-remote' />
-            <label htmlFor='is-remote'>Remote Friendly</label>
+            <label htmlFor='is-remote'>Kaugtöö võimalus</label>
           </div>
 
           <div className='checkbox'>
@@ -108,14 +108,14 @@ const Sidebar = ({ filters }) => {
               onChange={handleInputChange}
               checked={isFullTime}
               id='is-full-time' />
-            <label htmlFor='is-full-time'>Full Time</label>
+            <label htmlFor='is-full-time'>Täisaeg</label>
           </div>
         </div>
 
-        <button type='submit' className='search'>Search</button>
+        <button type='submit' className='search'>Otsi</button>
       </form>
 
-      <a className='clear' onClick={handleFiltersReset}>Clear all filters</a>
+      <a className='clear' onClick={handleFiltersReset}>Eemalda kõik filtrid</a>
 
       <div className='email'>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

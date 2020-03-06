@@ -34,7 +34,7 @@ const styles = css`
     align-items: flex-start;
     max-width: ${t.width.lg};
     margin: 0 auto;
-    padding: ${t.spacing[16]} 0;
+    padding-bottom: ${t.spacing[16]};
   }
 `
 
